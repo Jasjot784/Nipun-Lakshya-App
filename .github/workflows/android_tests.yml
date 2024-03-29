@@ -1,0 +1,93 @@
+name: Android Tests
+
+on:
+  push:
+    branches:
+      - android-testing
+  pull_request:
+    branches:
+      - android-testing
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Set up JDK
+        uses: actions/setup-java@v2
+        with:
+          distribution: 'adopt'
+          java-version: '11'
+
+      - name: Cache Gradle dependencies
+        uses: actions/cache@v2
+        with:
+          path: |
+            ~/.gradle/caches
+            ~/.gradle/wrapper
+          key: ${{ runner.os }}-gradle-${{ hashFiles('**/*.gradle*', '**/gradle-wrapper.properties') }}
+          restore-keys: |
+            ${{ runner.os }}-gradle-
+
+      - name: Run AssessmentsSchoolHistoryDaoTest
+        working-directory: ./data
+        run: |
+          ./gradlew test --tests "com.data.db.dao.AssessmentsSchoolHistoryDaoTest"
+
+      - name: Run AssessmentStateDaoTest
+        working-directory: ./data
+        run: |
+          ./gradlew test --tests "com.data.db.dao.AssessmentStateDaoTest"
+
+      - name: Run AssessmentSubmissionDaoTest
+        working-directory: ./data
+        run: |
+          ./gradlew test --tests "com.data.db.dao.AssessmentSubmissionDaoTest"
+
+      - name: Run CycleDetailsDaoTest
+        working-directory: ./data
+        run: |
+          ./gradlew test --tests "com.data.db.dao.CycleDetailsDaoTest"
+
+      - name: Run ExaminerPerformanceInsightsDaoTest
+        working-directory: ./data
+        run: |
+          ./gradlew test --tests "com.data.db.dao.ExaminerPerformanceInsightsDaoTest"
+
+      - name: Run MetaDataDaoTest
+        working-directory: ./data
+        run: |
+          ./gradlew test --tests "com.data.db.dao.MetaDataDaoTest"
+
+      - name: Run SchoolsDaoTest
+        working-directory: ./data
+        run: |
+          ./gradlew test --tests "com.data.db.dao.SchoolsDaoTest"
+
+      - name: Run SchoolStatusHistoryDaoTest
+        working-directory: ./data
+        run: |
+          ./gradlew test --tests "com.data.db.dao.SchoolStatusHistoryDaoTest"
+
+      - name: Run SchoolSubmissionsDaoTest
+        working-directory: ./data
+        run: |
+          ./gradlew test --tests "com.data.db.dao.SchoolSubmissionsDaoTest"
+
+      - name: Run StudentsAssemblyHistoryDaoTest
+        working-directory: ./data
+        run: |
+          ./gradlew test --tests "com.data.db.dao.StudentsAssemblyHistoryDaoTest"
+
+      - name: Run StudentsDaoTest
+        working-directory: ./data
+        run: |
+          ./gradlew test --tests "com.data.db.dao.StudentsDaoTest"
+
+      - name: Run TeacherPerformanceInsightsDaoTest
+        working-directory: ./data
+        run: |
+          ./gradlew test --tests "com.data.db.dao.TeacherPerformanceInsightsDaoTest"
