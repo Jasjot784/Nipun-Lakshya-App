@@ -48,6 +48,10 @@ android {
                 maxHeapSize = "2048M"
             }
         }
+        execution 'ANDROIDX_TEST_ORCHESTRATOR'
+        unitTests.all {
+            // Add more options if needed
+        }
     }
     namespace 'com.samagra.ancillaryscreens'
 }
