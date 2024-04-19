@@ -1,0 +1,49 @@
+{
+  "project_info": {
+    "project_number": "726599120114",
+    "firebase_url": "https://milk-33254-default-rtdb.firebaseio.com",
+    "project_id": "milk-33254",
+    "storage_bucket": "milk-33254.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:726599120114:android:753d8a9bee2ca840924c6b",
+        "android_client_info": {
+          "package_name": "org.odk.collect.android"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDoe5MRPnktPw0KOkP6eJp3tpvSs3bxucc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:726599120114:android:9e75daa610dd6e69924c6b",
+        "android_client_info": {
+          "package_name": "org.samagra.missionPrerna"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDoe5MRPnktPw0KOkP6eJp3tpvSs3bxucc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

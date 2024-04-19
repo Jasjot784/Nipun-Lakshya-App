@@ -1,0 +1,81 @@
+name: Android Tests
+
+on:
+  push:
+    branches:
+      - android-testing
+  pull_request:
+    branches:
+      - android-testing
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Set up JDK
+        uses: actions/setup-java@v2
+        with:
+          distribution: 'adopt'
+          java-version: '11'
+
+      - name: Cache Gradle dependencies
+        uses: actions/cache@v2
+        with:
+          path: |
+            ~/.gradle/caches
+            ~/.gradle/wrapper
+          key: ${{ runner.os }}-gradle-${{ hashFiles('**/*.gradle*', '**/gradle-wrapper.properties') }}
+          restore-keys: |
+            ${{ runner.os }}-gradle-
+
+      - name: Run AssessmentsSchoolHistoryDaoTest
+        run: |
+          ./gradlew --stacktrace :ancillaryscreens:testDebug --tests "com.data.db.dao.AssessmentsSchoolHistoryDaoTest"
+
+      - name: Run AssessmentStateDaoTest
+        run: |
+          ./gradlew --stacktrace :ancillaryscreens:testDebug --tests "com.data.db.dao.AssessmentStateDaoTest"
+
+      - name: Run AssessmentSubmissionDaoTest
+        run: |
+          ./gradlew --stacktrace :ancillaryscreens:testDebug --tests "com.data.db.dao.AssessmentSubmissionDaoTest"
+
+      - name: Run CycleDetailsDaoTest
+        run: |
+          ./gradlew --stacktrace :ancillaryscreens:testDebug --tests "com.data.db.dao.CycleDetailsDaoTest"
+
+      - name: Run ExaminerPerformanceInsightsDaoTest
+        run: |
+          ./gradlew --stacktrace :ancillaryscreens:testDebug --tests "com.data.db.dao.ExaminerPerformanceInsightsDaoTest"
+
+      - name: Run MetaDataDaoTest
+        run: |
+          ./gradlew --stacktrace :ancillaryscreens:testDebug --tests "com.data.db.dao.MetaDataDaoTest"
+
+      - name: Run SchoolsDaoTest
+        run: |
+          ./gradlew --stacktrace :ancillaryscreens:testDebug --tests "com.data.db.dao.SchoolsDaoTest"
+
+      - name: Run SchoolStatusHistoryDaoTest
+        run: |
+          ./gradlew --stacktrace :ancillaryscreens:testDebug --tests "com.data.db.dao.SchoolStatusHistoryDaoTest"
+
+      - name: Run SchoolSubmissionsDaoTest
+        run: |
+          ./gradlew --stacktrace :ancillaryscreens:testDebug --tests "com.data.db.dao.SchoolSubmissionsDaoTest"
+
+      - name: Run StudentsAssemblyHistoryDaoTest
+        run: |
+          ./gradlew --stacktrace :ancillaryscreens:testDebug --tests "com.data.db.dao.StudentsAssemblyHistoryDaoTest"
+
+      - name: Run StudentsDaoTest
+        run: |
+          ./gradlew --stacktrace :ancillaryscreens:testDebug --tests "com.data.db.dao.StudentsDaoTest"
+
+      - name: Run TeacherPerformanceInsightsDaoTest
+        run: |
+          ./gradlew --stacktrace :ancillaryscreens:testDebug --tests "com.data.db.dao.TeacherPerformanceInsightsDaoTest"
